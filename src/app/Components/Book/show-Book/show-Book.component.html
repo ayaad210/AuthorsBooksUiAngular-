@@ -1,0 +1,71 @@
+
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2" data-toggle="modal" data-target="#exampleModal"
+(click)=addclick()  data-backdrop="static" data-keybourd="false"> 
+    Add new Book
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centerd modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row justify-content-center " >
+          <app-add-edit-Book [Book]="Book" *ngIf="ActivateAddEditBookComp"></app-add-edit-Book>
+
+        </div>
+     
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+<table class="table table-striped">
+
+<thead>
+<th>Name</th>
+<th>description</th>
+<th> dateOfPublication</th>
+
+<th></th>
+</thead>
+<tbody>
+    <tr *ngFor="let dataitem of BookList">
+<td>{{dataitem.title}}</td>
+<td>{{dataitem.description}}</td>
+
+<td>{{dataitem.dateOfPublication| date:'dd/mm/yy'}}</td>
+
+<td>
+  <button type="button" (click)="delete(dataitem)" class="btn float-right btn-danger mr-1">Delete</button>
+
+    <button type="button" class="btn btn-outline-primary mr-1 float-right " data-toggle="modal" data-target="#exampleModal"
+    (click)=Editclick(dataitem)  data-backdrop="static" data-keybourd="false">  Edit</button>
+
+  </td>
+
+
+
+
+    </tr>
+</tbody>
+
+</table>

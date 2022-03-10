@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row ">
+    
+<div class="input-group mb-3">
+    <input type="text" name="serch"  [(ngModel)]="SearchModel.title" class="form-control" placeholder="Search About Books" aria-label="Search About Books" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" (click)="Search()" type="button">Search</button>
+    </div>
+  </div>
+  
+    </div>
+<div class="row">
+
+    <div class="card text-dark bg-default mb-3 mx-auto col-lg-3 col-sm-6" *ngFor="let item of BookList"   >
+        <div class="card-header">
+           <h3 class="success">{{item.title}}</h3>
+        </div>
+    
+        <div  class="card-body align-items-center row">
+        <div class="col-12 bordeWr">
+            <img  class="rounded " width="100%" height="220px"  [src]="photosurl+item.coverPath"/>
+        </div>
+     <div class="col-12 text-center">
+        <label class="text-primary">description</label><br>
+        {{item.description}}
+     </div>
+        </div>
+        <div class="card card-footer text-center " >
+          
+          <label  class="text-primary">Authors</label>
+         <div class="row text-left">
+            <div class="col"
+            
+            *ngFor="let auth of item.authors"  >
+                {{auth.name}} 
+        </div>
+         
+         </div>
+      </div>
+    </div>
+</div>
+
+</div>
